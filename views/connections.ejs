@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+<meta charset="UTF-8">
+<link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+
+
+    <title>Connections</title>
+  </head>
+
+
+<body>
+    <%- include ('partials/header.ejs') %>
+    <%- include ('partials/nav.ejs') %>
+    <%- include ('partials/footer.ejs') %>
+
+    
+    <% categories.forEach(function(item){  %>
+			
+            <h3 ><%= item %></h3> 
+            <% var topic_item = item
+            data.forEach(function(i){
+                if(i.connectionTopic==topic_item){
+                    var connectionid="/connections/connection?connectionid="+i.connectionId%> 
+                    <div class="events">
+                        <ul >   
+                            <li><a href = "/connections/connection?id=<%= i.connectionId%>"> <%=i.connectionName%> </a></li>
+                                
+                        </ul>
+                       </div>
+               <% } %>
+           <% })})%>
+
+    </body>
+    
+
+</html>
+
+
+
+
+ 

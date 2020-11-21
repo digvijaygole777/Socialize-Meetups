@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang ="en">
+  <head>
+<meta charset="UTF-8">
+<link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+
+
+  <title>Home Page</title>
+</head>
+
+<body>
+  <%- include ('partials/header.ejs') %>
+  <%- include ('partials/nav.ejs') %>
+  <%- include ('partials/footer.ejs') %>
+ 
+    <main>
+      
+        <h1 class="welcome">Welcome to Socializer</h1>
+
+        <p>Please Enter you username and password to sign in </p>
+      
+        <% if(errors!='')
+        {
+          for(i in errors){%>
+           <% if(errors[i].msg=="Cannot read property 'userId' of undefined"){%>
+           <span>Invalid User Email ID</span> 
+            <%}else{%>
+          <%=errors[i].msg%><br>
+          <%}%>
+      <%  }}%> 
+      
+          <form class="form" action="userprofile" method="post">
+            <label for="userEmaildAddress"><span>Email</span>
+            <input type="email" id="email" placeholder="email" name="userEmaildAddress" required></label>
+            <label for="userPassword"> <span>Password</span>
+            <input type="password" id="userPassword" placeholder="password" name="userPassword" required></label>
+            <label><span> </span><input type="submit" value="Log In" /></label>
+          </form>
+        </main>
+       
+    </body>
+
+</html>

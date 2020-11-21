@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<div class="topnav">
+    <a href="/connections">Connections</a>
+
+    <%if(session===undefined){%>
+      <a href="/login">Saved Connections</a>
+    <%}else{%>
+      <a href="/userprofile">Saved Connections</a>
+    <%}%>
+    
+  </div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang ="en">
+<head>
+<meta charset="UTF-8">
+
+<link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+
+
+    <title>Connections details</title>
+  </head>
+
+
+<body>
+    <%- include ('partials/header.ejs') %>
+  <%- include ('partials/nav.ejs') %>
+  <%- include ('partials/footer.ejs') %>
+
+    <main>
+      <% if(object=='undefined' || object == null){%>
+        <h3>Invalid connection  id found please correct the id</h3>
+      <%}else{%>
+
+      
+        <img src="/assets/images/batman.jpg" alt="Profile Photo" height="80" width="80" class="profilepic">
+       <section class="specificevent">
+        
+           <h3><%= object.connectionName %></h3>
+           <p><%= object.date %><br><br><%= object.time %>
+        <br><%= object.address %></p>
+       </section>
+       <section class="specificevent">
+           <h3></h3>
+           <p><%= object.connectionDetails %></p>
+       </section>
+    
+        </main>
+
+        <aside>
+            
+           
+        
+          <div class="center-text">
+
+            <% if(session === undefined){ %>
+              <p>Are you going?</p>
+              <form action="/login" >
+               
+                <button type="submit" class="button" ><i class="fas fa-arrow-right">&nbsp;I'm Interested</i></button>
+                <button type="submit" class="button" ><i class="fas fa-arrow-right">&nbsp;I'm Going</i></button>
+                <button type="submit" class="button"><i class="fas fa-arrow-right">&nbsp;Not Interested</i></button>
+            </form>
+              <% } %>
+              <% if(session != undefined){ %>
+                 
+                    <p>Are you going?</p>
+
+            <form action="/connections/update" method="post">
+              <input type="hidden" name="connectionId" value="<%= object.connectionId %>"/>
+              <button type="submit" class="button" name="action" value="maybe"><i class="fas fa-arrow-right">&nbsp;I'm Interested</i></button>
+              <button type="submit" class="button" name="action" value="yes"><i class="fas fa-arrow-right">&nbsp;I'm Going</i></button>
+              <button type="submit" class="button" name="action" value="no"><i class="fas fa-arrow-right">&nbsp;Not Interested</i></button>
+          </form>
+           
+                
+          <% } %>
+          </div>
+            </aside>
+           
+       <% }%>
+    </body>
+
+</html>

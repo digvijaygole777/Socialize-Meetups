@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+<meta charset="UTF-8">
+<link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+
+
+    <title>Saved Connections</title>
+  
+</head>
+
+<body>
+    <%- include ('partials/header.ejs') %>
+    
+    <%- include ('partials/footer.ejs') %>
+    <div class="topnav">
+       
+        <a href="connections">Connections</a>
+
+        <h4>Welcome <%=session.userFirstName%></h4>
+        
+      </div>
+
+    <main>
+        <h4><%=session.userFirstName%> Connections:</h4>
+        <% if(connection.length==0) { %>
+            <p>There are no upcoming connections for you.</p>
+            <% } else
+                { %>
+
+        <table>
+            <tr>
+                <th>Connections</th>
+                <th>Category</th>
+                <th>Going?</th>
+                <th>Edit Actions</th>
+                </tr>
+                <tr>
+                    <% for(var i= 0; i < connection.length;i++){ %>
+                        <td>&nbsp;<%= connection[i].connection.connectionTopic %></td>
+                        <td><%= connection[i].connection.connectionName %></td>
+                        <td><%= connection[i].rsvp %></td>
+                        <td>
+                            <form action="/connections/update" method="post">
+                                
+                                <input type="hidden" name="connectionId" value="<%= connection[i].connection.connectionId %>" />
+                                <a  class="buttonUpdate" style ="color:rgb(0, 255, 221); cursor: pointer;" href="/connections/connection?id=<%= connection[i].connection.connectionId %>">Update</a>
+                                <button type="submit" class="buttonDelete" name="action" value="delete">&nbsp;Delete</button>
+                              </form>
+                              
+  
+                    </td>
+                    </tr>
+                    <% }}%>
+             
+        </table>
+        
+
+        </main>
+
+       
+    </body>
+
+</html>

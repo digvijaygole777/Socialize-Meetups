@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<header class="topbar">  
+    <div class="toplink">
+      <ul>
+        <% if(session!== undefined){ %>
+          <li ><a href="/userprofile/logout">Logout</a></li>
+           <a href="/index"> <img src="/assets/images/socializerlogo.png" alt="Logo" height="80" width="150" class="homeimg"></a>
+          <% } else {%>
+          
+         <li ><a href="/login" >Login</a></li>
+         <li ><a href="" >Signup</a></li>
+         <a href="/index"> <img src="/assets/images/socializerlogo.png" alt="Logo" height="80" width="150" class="homeimg"></a>
+         <% } %>
+         <li ><a href="/connections/newConnection">Start New Connection</a></li>
+          </ul>
+        </div>
+        
+  </header>

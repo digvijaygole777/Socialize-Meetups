@@ -1,0 +1,110 @@
+use Events;
+
+
+db.createCollection('Users');
+db.createCollection('Conections');
+db.createCollection('UserConnections');
+
+db.Users.insert([{
+    userId: 1,
+    userFirstName: "Digvijay",
+    userLastName: "Gole",
+    userEmail: "dgole@uncc.edu",
+    password:"batmandig1234",
+    addressfield: "University Terrace Drive",
+    userCity: "Charlotte",
+    userState: "NC",
+    userZipCode:"28262"
+  },
+  {
+    userId: 2,
+    userFirstName: "Bunty",
+    userLastName: "Darade",
+    userEmail: "bunty.darade21@uncc.edu",
+    password:"bunty21",
+    addressfield: "University Terrace Drive",
+    userCity: "Charlotte",
+    userState: "NC",
+    userZipCode:"28262"
+  }]);
+
+
+
+  db.Conections.insertMany([
+  {
+    connectionId:1,
+    connectionTopic: 'Sports',
+    connectionName: 'Basketball',
+    connectionDetails:'Hosted BY Digvijay Gole',
+    date:'Tuesday, February 18',
+    time:'5PM',
+    address:'University terrace Drive',
+    userId: 2
+  },
+  {
+    connectionId:2,
+    connectionTopic: 'Sports',
+    connectionName: 'Chess',
+    connectionDetails:'Hosted BY Buntydarade21',
+    date:'Tuesday, February 12',
+    time: '5PM',
+    address:'University terrace Drive 9515',
+    userId: 2
+  },
+  {
+    connectionId:3,
+    connectionTopic: 'Sports',
+    connectionName: 'Skating',
+    connectionDetails:'Hosted BY Tanvi',
+    date:'Tuesday, February 10',
+    time: '6PM',
+    address:'University terrace north',
+    userId:2
+  },
+   {
+    connectionId:4,
+    connectionTopic: 'Eatout',
+    connectionName: 'pub',
+    connectionDetails:'Hosted BY Yashmech',
+    date:'Tuesday, march21',
+    time: '6PM',
+    address:'New Brunswick NJ',
+    userId:1
+  },
+  {
+    connectionId:5,
+    connectionTopic: 'Eatout',
+    connectionName: 'restro',
+    connectionDetails:'Hosted BY Sasuke',
+    date:'Tuesday, march24',
+    time: '8PM',
+    address:'Seattle ,WA',
+    userId:1
+  },
+  {
+    connectionId:6,
+    connectionTopic: 'Eatout',
+    connectionName: 'bar',
+    connectionDetails:'Hosted By Kejriwal',
+    date:'Tuesday, march26',
+    time: '8PM',
+    address:'Boston,MA',
+    userId: 1
+  }
+]);
+
+
+//DO NOT INSERT THE UserConnections into DB manually because the app will break.
+
+db.UserConnections.insertMany([
+{
+	"userId" : 1,
+	"connectionId" : 1,
+	"rsvp" : "Yes"
+},
+{
+	"userId" : 1,
+	"connectionId" : 2,
+	"rsvp" : "Maybe"
+}
+]);

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang ="en">
+  <head>
+<meta charset="UTF-8">
+<link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+
+
+  <title>Home Page</title>
+</head>
+
+<body>
+  <%- include ('partials/header.ejs') %>
+  <%- include ('partials/nav.ejs') %>
+  <%- include ('partials/footer.ejs') %>
+ 
+  
+     
+ 
+      <main id="newConnection">
+        <h2 class="center-text">Add a Social Event</h2>
+        
+          <% if(err!='')
+           {
+             for(i in err){%>
+             <%=err[i].msg%><br>
+         <%  }
+           }%> 
+         
+        <form class="form" action="/connections/newConnection" method="POST">
+          <label for="topic"><span>Topic</span>
+          <input type="text" id="topic" placeholder="topic" name="topic" required></label>
+          <label for="name"><span>Name</span>
+          <input type="text" id="name" placeholder="name" name="name" required></label>
+          <label for="description"><span>Details</span>
+          <textarea id="description" placeholder="description" name="description" required></textarea></label>
+          <label for="when"><span>When</span>
+          <input type="date" id="when" name="when" value="" min="2020-05-03" max="2024-12-31" required></label>
+          <label for="time"><span>Time</span>
+          <input type="text" id="time" placeholder="time"  pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" name="time" required></label>
+          <label for="where"><span>Where</span>
+          <input type="text" id="where" placeholder="location" name="where" required></label>
+          <label><span> </span><input type="submit" value="Add Travel" /> </label>
+        </form>
+      </main>
+ 
+
+  
+    
+ 
+ 
+    
+  
+        
+       
+    </body>
+
+</html>
